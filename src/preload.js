@@ -1,4 +1,5 @@
 const { contextBridge, ipcRenderer } = require('electron');
+const { NonFullScreenPageMode } = require('pdf-lib');
 
 contextBridge.exposeInMainWorld('electron', {
 	openDialog: () => {
@@ -6,6 +7,8 @@ contextBridge.exposeInMainWorld('electron', {
 	},
 });
 
-ipcRenderer.on('done', (event, message) => {
-	console.log(message);
+contextBridge.exposeInMainWorld('renderer', {
+	send: (channel, data = None) => ipcRenderer.send(channel, data),
+	receive: (channel, func) =>
+		ipcRenderer.on(channel, (event, ...args) => func(args)),
 });

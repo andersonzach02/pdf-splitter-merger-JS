@@ -58,6 +58,11 @@ app.on('activate', () => {
 // An event listener to be called on the open-dialog event which gets called
 // from the render process
 ipcMain.on('open-dialog', async () => {
-	await dialog.showOpenDialog({ properties: ['openFile'] });
-	mainWindow.webContents.send('done', 'Files Chosen!');
+	const { cancelled, filePaths } = await dialog.showOpenDialog({
+		properties: ['openFile'],
+	});
+
+	if (cancelled) return [];
+
+	mainWindow.webContents.send('done', filePaths);
 });
