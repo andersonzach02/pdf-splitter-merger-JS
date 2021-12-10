@@ -4,8 +4,8 @@ This is a repository that contains the code for a desktop application that while
 
 ## TODO
 
-- [ ] Install electron with dependencies using electron forge ⚛️.
-- [ ] Install pdf-lib to work with pdfs .
+- [x] Install electron with dependencies using electron forge ⚛️.
+- [x] Install pdf-lib to work with pdfs .
 - [ ] Create ability for the application to get access to the file explorer system 🗃️.
 - [ ] Let users choose a single PDF to split 🪓, or multiple PDFs to merge 🩹.
 - [ ] Figure out logic for splitting and merging PDFs 🗺️.
